@@ -1,6 +1,8 @@
 package com.kenolee.kenopermission;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -59,6 +61,16 @@ public class KenoPermission {
             }
         }
         return true;
+    }
+    public void openPermissionSetting()
+    {
+        try{
+        Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+        intent.setData(Uri.parse("package:" + mWRActivity.get().getPackageName()));
+        mWRActivity.get().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));}
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
     public   String[] getNotGranted(String[] permissions)
     {

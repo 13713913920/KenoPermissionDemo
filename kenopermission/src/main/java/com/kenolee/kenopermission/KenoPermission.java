@@ -22,7 +22,7 @@ public class KenoPermission {
 
     private WeakReference<Activity> mWRActivity;
     private Callback mCallback;
-    private  int code=1;
+    private  int code=666;
     private static HashMap<Integer,KenoPermission>  hashMap=new HashMap<>();
     private  String[] permissions;
 
@@ -36,6 +36,7 @@ public class KenoPermission {
     public KenoPermission(Activity activity, String[] permissions, int requestCode)
     {
         this.permissions=permissions;
+        code=requestCode;
         mWRActivity=new WeakReference<>(activity);
         hashMap.put(requestCode,this);
     }
